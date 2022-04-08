@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CariFoto</string>
+    <string name="favorite">Favorite</string>
+    <string name="visit_in_browser">Visit</string>
+    <string name="download">Download</string>
+    <string name="contentdescription">ContentDescription</string>
+    <string name="description">Description</string>
+</resources>
