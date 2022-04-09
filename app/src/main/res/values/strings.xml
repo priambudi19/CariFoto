@@ -5,4 +5,8 @@
     <string name="download">Download</string>
     <string name="contentdescription">ContentDescription</string>
     <string name="description">Description</string>
+    <string name="share">Share</string>
+    <string name="hasil_pencarian">Hasil :%1$s</string>
+    <string name="title">Title</string>
+    <string name="cari_foto">Cari Foto</string>
 </resources>

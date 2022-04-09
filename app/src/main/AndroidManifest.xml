@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CariFoto">
         <activity
-            android:name=".DetailActivity"
+            android:name="com.priambudi19.carifoto.presentation.detail.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

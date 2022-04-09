@@ -1,11 +1,21 @@
-package com.priambudi19.carifoto.model
+package com.priambudi19.carifoto.data.model
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+@Entity(tableName = "tb_photos")
+data class Photo(
+    @PrimaryKey
+    @SerializedName("id")
+    var id: String = "",
+
     @SerializedName("alt_description")
     var altDescription: String = "",
+
+    @SerializedName("description")
+    var description: String = "",
 
     @SerializedName("created_at")
     var createdAt: String = "",

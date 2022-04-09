@@ -1,6 +1,7 @@
-package com.priambudi19.carifoto.model
+package com.priambudi19.carifoto.data.model
 
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
 data class User(
