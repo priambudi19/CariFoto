@@ -1,8 +1,11 @@
 package com.priambudi19.carifoto.data.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Urls(
     @SerializedName("full")
     var full: String = "",
@@ -16,4 +19,4 @@ data class Urls(
     var smallS3: String = "",
     @SerializedName("thumb")
     var thumb: String = ""
-)
+): Parcelable

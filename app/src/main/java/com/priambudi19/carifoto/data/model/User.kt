@@ -1,15 +1,18 @@
 package com.priambudi19.carifoto.data.model
 
 
+import android.os.Parcelable
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class User(
 
     @SerializedName("first_name")
     var firstName: String = "",
 
-    @SerializedName("id")
+    @SerializedName("id", alternate = ["id_user"])
     var id: String = "",
 
     @SerializedName("last_name")
@@ -29,4 +32,4 @@ data class User(
 
     @SerializedName("username")
     var username: String = ""
-)
+) : Parcelable

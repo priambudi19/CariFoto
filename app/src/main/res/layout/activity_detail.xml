@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="false"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <include
             android:id="@+id/toolbar_detail"
-            layout="@layout/base_toolbar"/>
+            layout="@layout/base_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_list_item" />
+
         <ImageView
             android:id="@+id/img_list_item"
             android:layout_width="match_parent"
@@ -24,35 +30,43 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:id="@+id/hover_info"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/gradient_foto"
+            android:elevation="12dp"
             android:paddingHorizontal="8dp"
             android:paddingTop="24dp"
             android:paddingBottom="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/img_list_item"
             app:layout_constraintEnd_toEndOf="@+id/img_list_item"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/img_list_item">
 
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_fullscreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="4dp"
                 android:background="@null"
+                android:clickable="true"
+                android:elevation="10dp"
+                android:focusable="true"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_fullscreen"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_fullscreen"
                 app:tint="@color/white"
                 tools:ignore="SpeakableTextPresentCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/img_user"
@@ -145,19 +159,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/download"
-            app:iconGravity="end"
             app:icon="@drawable/ic_download"
+            app:iconGravity="end"
             app:layout_constraintEnd_toEndOf="@+id/btn_add_favorite"
             app:layout_constraintStart_toStartOf="@+id/btn_visit"
             app:layout_constraintTop_toBottomOf="@+id/btn_visit" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_share"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            app:iconGravity="end"
             android:layout_height="wrap_content"
             android:text="@string/share"
             app:icon="@drawable/ic_share"
+            app:iconGravity="end"
             app:layout_constraintEnd_toEndOf="@+id/btn_download"
             app:layout_constraintStart_toStartOf="@+id/btn_download"
             app:layout_constraintTop_toBottomOf="@+id/btn_download" />

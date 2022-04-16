@@ -1,10 +1,17 @@
 package com.priambudi19.carifoto.data.repository
 
+import androidx.paging.PagingData
+import com.priambudi19.carifoto.data.model.Photo
+import com.priambudi19.carifoto.utils.Resource
+import kotlinx.coroutines.flow.Flow
+
 interface MainRepository {
-    fun getRandomPhotos()
-    fun getDetailPhoto()
-    fun getSearchPhoto()
-    fun getFavoritePhotos()
-    fun insertFavoritePhotos()
-    fun deleteFavoritePhotos()
+    suspend fun getRandomPhotos(): Resource<List<Photo>>
+    suspend fun getSearchPhoto(query: String, page: Int = 1): Flow<PagingData<Photo>>
+    suspend fun getDetailPhoto(id: String): Resource<Photo>
+    fun getFavoritePhotos(): Flow<Resource<List<Photo>>>
+    fun getFavoritePhotosById(id: String): Flow<List<Photo>>
+    suspend fun insertFavoritePhotos(photo: Photo): Resource<Photo>
+    suspend fun deleteFavoritePhotos(photo: Photo): Resource<Photo>
+    suspend fun deleteBulkFavoritePhotos(vararg photos: Photo): Resource<Photo>
 }

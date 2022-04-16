@@ -1,10 +1,13 @@
 package com.priambudi19.carifoto.data.model
 
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "tb_photos")
 data class Photo(
     @PrimaryKey
@@ -12,10 +15,10 @@ data class Photo(
     var id: String = "",
 
     @SerializedName("alt_description")
-    var altDescription: String = "",
+    var altDescription: String? = "",
 
     @SerializedName("description")
-    var description: String = "",
+    var description: String? = "",
 
     @SerializedName("created_at")
     var createdAt: String = "",
@@ -23,7 +26,7 @@ data class Photo(
     @SerializedName("height")
     var height: Int = 0,
 
-    @SerializedName("id")
+    @SerializedName("links")
     var links: Links = Links(),
 
     @SerializedName("urls")
@@ -34,4 +37,4 @@ data class Photo(
 
     @SerializedName("width")
     var width: Int = 0
-)
+): Parcelable

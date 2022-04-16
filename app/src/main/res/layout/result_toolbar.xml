@@ -23,7 +23,7 @@
         android:textColor="@color/white"
         tools:text="Hasil: Query" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/btn_close_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,12 +31,14 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="8dp"
         android:background="@null"
+        android:clickable="true"
+        android:focusable="true"
         android:contentDescription="@null"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close"
+        android:src="@drawable/ic_close"
         app:tint="@color/white"
         tools:ignore="SpeakableTextPresentCheck" />
     <View
