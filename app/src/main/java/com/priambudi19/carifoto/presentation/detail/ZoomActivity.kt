@@ -1,8 +1,8 @@
 package com.priambudi19.carifoto.presentation.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import coil.load
 import com.priambudi19.carifoto.R

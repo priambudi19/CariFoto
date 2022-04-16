@@ -1,7 +1,6 @@
 package com.priambudi19.carifoto.presentation.detail
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.*
 import androidx.work.*
 import com.priambudi19.carifoto.data.model.Photo
@@ -9,9 +8,6 @@ import com.priambudi19.carifoto.data.repository.MainRepository
 import com.priambudi19.carifoto.download.FotoDownloadManager
 import com.priambudi19.carifoto.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

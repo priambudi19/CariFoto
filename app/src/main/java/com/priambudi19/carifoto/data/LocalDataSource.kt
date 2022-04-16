@@ -3,8 +3,6 @@ package com.priambudi19.carifoto.data
 import com.priambudi19.carifoto.data.local.PhotosDao
 import com.priambudi19.carifoto.data.model.Photo
 import com.priambudi19.carifoto.utils.Resource
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.*
 import okio.IOException
 
 class LocalDataSource(private val dao: PhotosDao) {

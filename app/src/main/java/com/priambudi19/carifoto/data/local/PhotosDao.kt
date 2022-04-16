@@ -2,7 +2,6 @@ package com.priambudi19.carifoto.data.local
 
 import androidx.room.*
 import com.priambudi19.carifoto.data.model.Photo
-import com.priambudi19.carifoto.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 @Dao

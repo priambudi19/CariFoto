@@ -1,19 +1,16 @@
 package com.priambudi19.carifoto.presentation.favorite
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.paging.PagingData
-import androidx.paging.PagingDataAdapter
 import com.priambudi19.carifoto.R
 import com.priambudi19.carifoto.databinding.FragmentFavoriteBinding
 import com.priambudi19.carifoto.presentation.adapter.PhotoAdapter
-import com.priambudi19.carifoto.presentation.adapter.PhotoPagingAdapter
 import com.priambudi19.carifoto.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 

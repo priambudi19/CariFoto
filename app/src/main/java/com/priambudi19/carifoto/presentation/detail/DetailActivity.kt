@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.*
+import androidx.core.content.ContextCompat.getColor
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.net.toUri
 import androidx.work.WorkInfo
 import coil.load
@@ -24,8 +24,6 @@ import com.priambudi19.carifoto.databinding.ActivityDetailBinding
 import com.priambudi19.carifoto.download.FotoDownloadManager
 import com.priambudi19.carifoto.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.last
-import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint

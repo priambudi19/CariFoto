@@ -2,8 +2,8 @@ package com.priambudi19.carifoto.presentation.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.priambudi19.carifoto.R
 import com.priambudi19.carifoto.presentation.MainActivity
