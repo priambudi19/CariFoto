@@ -34,7 +34,7 @@ class MainRepositoryImpl(
         return remoteDataSource.getDetailPhoto(id)
     }
 
-    override fun getFavoritePhotos(): Flow<Resource<List<Photo>>> {
+    override fun getFavoritePhotos(): Resource<List<Photo>> {
         return localDataSource.getFavoritePhotos()
     }
 

@@ -34,10 +34,16 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setData()
         initUi()
         mAdapter.onClick = {
             toDetailPhoto(it.id)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.setData()
     }
 
     private fun toDetailPhoto(id: String) {
@@ -53,10 +59,11 @@ class FavoriteFragment : Fragment() {
             favoriteToolbar.btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }
-            rvFavorite.adapter = mAdapter
+
             viewModel.getListFavorite.observe(viewLifecycleOwner) {
                 when (it) {
                     is Resource.Loading -> {
+                        rvFavorite.visibility = View.INVISIBLE
                         loadingResult.visibility = View.VISIBLE
                         txtMessage.visibility = View.VISIBLE
                         errorResult.visibility = View.GONE
@@ -64,6 +71,8 @@ class FavoriteFragment : Fragment() {
                         txtMessage.text = getString(R.string.loading)
                     }
                     is Resource.Success -> {
+                        rvFavorite.visibility = View.VISIBLE
+                        rvFavorite.adapter = mAdapter
                         mAdapter.setData(it.data!!)
                         loadingResult.visibility = View.GONE
                         txtMessage.visibility = View.GONE
@@ -71,6 +80,7 @@ class FavoriteFragment : Fragment() {
                         emptyResult.visibility = View.GONE
                     }
                     is Resource.Error -> {
+                        rvFavorite.visibility = View.INVISIBLE
                         loadingResult.visibility = View.GONE
                         txtMessage.visibility = View.VISIBLE
                         txtMessage.text = getString(R.string.error_connection)
@@ -78,6 +88,7 @@ class FavoriteFragment : Fragment() {
                         emptyResult.visibility = View.GONE
                     }
                     is Resource.Empty -> {
+                        rvFavorite.visibility = View.INVISIBLE
                         loadingResult.visibility = View.GONE
                         txtMessage.visibility = View.VISIBLE
                         txtMessage.text = getString(R.string.no_data)

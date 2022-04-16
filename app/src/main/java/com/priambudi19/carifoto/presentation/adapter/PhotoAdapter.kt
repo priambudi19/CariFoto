@@ -23,6 +23,7 @@ class PhotoAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(list: List<Photo>) {
+        listPhoto.clear()
         listPhoto.addAll(list)
         notifyDataSetChanged()
     }

@@ -8,20 +8,17 @@ import kotlinx.coroutines.flow.*
 import okio.IOException
 
 class LocalDataSource(private val dao: PhotosDao) {
-    fun getFavoritePhotos(): Flow<Resource<List<Photo>>> = channelFlow {
-        trySend(Resource.Loading())
-        try {
-            dao.getFavoritePhotos().collectLatest {
-                if (it.isNotEmpty()){
-                    trySend(Resource.Success(it))
-                }else{
-                    trySend(Resource.Empty())
-                }
+    fun getFavoritePhotos(): Resource<List<Photo>> {
+        return try {
+            val data = dao.getFavoritePhotos()
+            if (data.isNotEmpty()) {
+                Resource.Success(data)
+            }else{
+                Resource.Empty()
             }
-        }catch (e : Exception){
-            trySend(Resource.Error(e, "Database Error"))
+        }catch (e: IOException){
+            Resource.Error(e,e.message!!)
         }
-        awaitClose()
     }
 
     fun getFavoritePhotoById(id: String) = dao.getDetailPhoto(id)
