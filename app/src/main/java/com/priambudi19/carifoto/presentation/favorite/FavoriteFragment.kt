@@ -1,5 +1,6 @@
 package com.priambudi19.carifoto.presentation.favorite
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,16 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.priambudi19.carifoto.R
 import com.priambudi19.carifoto.databinding.FragmentFavoriteBinding
 import com.priambudi19.carifoto.presentation.adapter.PhotoAdapter
-import com.priambudi19.carifoto.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
@@ -30,17 +35,10 @@ class FavoriteFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.setData()
         initUi()
         mAdapter.onClick = {
             toDetailPhoto(it.id)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.setData()
     }
 
     private fun toDetailPhoto(id: String) {
@@ -50,51 +48,27 @@ class FavoriteFragment : Fragment() {
         )
     }
 
+
     private fun initUi() {
         binding.apply {
+            rvFavorite.apply {
+                adapter = mAdapter
+                setHasFixedSize(true)
+            }
             favoriteToolbar.txtToolbarTitle.text = getString(R.string.list_favorite)
             favoriteToolbar.btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }
-
-            viewModel.getListFavorite.observe(viewLifecycleOwner) {
-                when (it) {
-                    is Resource.Loading -> {
-                        rvFavorite.visibility = View.INVISIBLE
-                        loadingResult.visibility = View.VISIBLE
-                        txtMessage.visibility = View.VISIBLE
-                        errorResult.visibility = View.GONE
-                        emptyResult.visibility = View.GONE
-                        txtMessage.text = getString(R.string.loading)
-                    }
-                    is Resource.Success -> {
-                        rvFavorite.visibility = View.VISIBLE
-                        rvFavorite.adapter = mAdapter
-                        mAdapter.setData(it.data!!)
-                        loadingResult.visibility = View.GONE
-                        txtMessage.visibility = View.GONE
-                        errorResult.visibility = View.GONE
-                        emptyResult.visibility = View.GONE
-                    }
-                    is Resource.Error -> {
-                        rvFavorite.visibility = View.INVISIBLE
-                        loadingResult.visibility = View.GONE
-                        txtMessage.visibility = View.VISIBLE
-                        txtMessage.text = getString(R.string.error_connection)
-                        errorResult.visibility = View.VISIBLE
-                        emptyResult.visibility = View.GONE
-                    }
-                    is Resource.Empty -> {
-                        rvFavorite.visibility = View.INVISIBLE
-                        loadingResult.visibility = View.GONE
-                        txtMessage.visibility = View.VISIBLE
-                        txtMessage.text = getString(R.string.no_data)
-                        errorResult.visibility = View.GONE
-                        emptyResult.visibility = View.VISIBLE
-                    }
+            lifecycleScope.launch {
+                viewModel.getListFavorite().observe(viewLifecycleOwner) {
+                    emptyResult.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+                    txtMessage.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+                    rvFavorite.visibility = if(it.isNotEmpty()) View.VISIBLE else View.GONE
+                    mAdapter.setData(it)
                 }
             }
         }
+
     }
 
     override fun onDestroy() {

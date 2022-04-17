@@ -48,8 +48,12 @@ class DetailActivity : AppCompatActivity() {
             is Resource.Loading -> {}
             is Resource.Success -> {
                 binding.apply {
-                    imgListItem.load(resource.data?.urls?.thumb)
-                    imgUser.load(resource.data?.user?.profileImage?.small) {
+                    imgListItem.load(resource.data?.urls?.regular){
+                        error(R.drawable.ic_broken)
+                        placeholder(R.drawable.ic_foto_loading)
+                    }
+                    imgUser.load(resource.data?.user?.profileImage?.medium) {
+                        error(R.drawable.ic_broken)
                         transformations(CircleCropTransformation())
                     }
                     txtDescription.text = if (!resource.data?.description.isNullOrBlank()) {

@@ -21,11 +21,14 @@ class PhotoAdapter(
         )
     }
 
+
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(list: List<Photo>) {
+    fun setData(list: List<Photo>?) {
         listPhoto.clear()
-        listPhoto.addAll(list)
-        notifyDataSetChanged()
+        if (list.isNullOrEmpty().not()) {
+            listPhoto.addAll(list!!)
+            notifyDataSetChanged()
+        }
     }
 
     override fun onBindViewHolder(holder: PhotoListViewHolder, position: Int) {

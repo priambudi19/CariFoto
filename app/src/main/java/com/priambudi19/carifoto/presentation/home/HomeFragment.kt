@@ -59,6 +59,7 @@ class HomeFragment : Fragment() {
     private fun initRecyclerView() {
         binding.rvHome.apply {
             adapter = mAdapter
+            setHasFixedSize(true)
         }
     }
 

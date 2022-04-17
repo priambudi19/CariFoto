@@ -48,7 +48,7 @@ class DetailViewModel @Inject constructor(
         val data = Data.Builder()
         data.apply {
             putString(FotoDownloadManager.FileParams.KEY_FILE_NAME, photo.id)
-            putString(FotoDownloadManager.FileParams.KEY_FILE_URL, photo.urls.regular)
+            putString(FotoDownloadManager.FileParams.KEY_FILE_URL, photo.urls.full)
             putString(FotoDownloadManager.FileParams.KEY_FILE_TYPE, "image/jpeg")
         }
 

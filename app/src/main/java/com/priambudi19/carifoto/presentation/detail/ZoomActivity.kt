@@ -23,7 +23,9 @@ class ZoomActivity : AppCompatActivity() {
 
     private fun initUi(url: String?) {
         binding.apply {
-            photoView.load(url)
+            photoView.load(url){
+                error(R.drawable.ic_broken)
+            }
             zoomToolbar.btnBack.setOnClickListener { finishAndRemoveTask() }
             zoomToolbar.txtToolbarTitle.text = getString(R.string.zoom_preview)
             zoomToolbar.btnBack.setImageDrawable(ContextCompat.getDrawable(this@ZoomActivity, R.drawable.ic_close_fullscreen))

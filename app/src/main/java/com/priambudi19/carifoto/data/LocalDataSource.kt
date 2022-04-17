@@ -6,18 +6,7 @@ import com.priambudi19.carifoto.utils.Resource
 import okio.IOException
 
 class LocalDataSource(private val dao: PhotosDao) {
-    fun getFavoritePhotos(): Resource<List<Photo>> {
-        return try {
-            val data = dao.getFavoritePhotos()
-            if (data.isNotEmpty()) {
-                Resource.Success(data)
-            }else{
-                Resource.Empty()
-            }
-        }catch (e: IOException){
-            Resource.Error(e,e.message!!)
-        }
-    }
+    suspend fun getFavoritePhotos() = dao.getFavoritePhotos()
 
     fun getFavoritePhotoById(id: String) = dao.getDetailPhoto(id)
 
