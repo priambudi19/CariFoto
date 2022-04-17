@@ -1,8 +1,9 @@
 # CariFoto
 #JuaraAndroid Submission
 Aplikasi Cari Foto merupakan aplikasi yang dapat mencari foto-foto dari API Unsplash.
-[🔽Download APK](https://github.com/priambudi19/CariFoto/raw/master/app/release/app-release.apk) 
-
+<br>[🔽Download APK](https://github.com/priambudi19/CariFoto/raw/master/app/release/app-release.apk) 
+<br><br>![Alt Text](https://media.giphy.com/media/noPccJqOE8WeRLLpeT/giphy.gif)
+<br>[📽 Full Video] (https://youtu.be/nN5dSTD4y1o) <br><br>
 **Fitur:**
  1. Pencarian Foto
  2. Menambahkan Foto Favorit
